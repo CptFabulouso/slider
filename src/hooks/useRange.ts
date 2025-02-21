@@ -7,6 +7,7 @@ type Props = {
   range: [number, number];
   minimumRange: number;
   minimumValue: number;
+  thumbSize: number;
   maximumValue: number;
   slideOnTap?: boolean;
   crossingAllowed?: boolean;
@@ -14,7 +15,7 @@ type Props = {
 }
 
 /** Handle the state of a range slider */
-const useRange = ({ step, range: propValue, minimumRange, minimumValue, maximumValue, slideOnTap, onValueChange, crossingAllowed }: Props) => {
+const useRange = ({ step, range: propValue, minimumRange, minimumValue, maximumValue, slideOnTap, onValueChange, crossingAllowed, thumbSize }: Props) => {
   const [minProp, maxProp] = propValue
   const minRef = React.useRef<number>(minProp)
   const maxRef = React.useRef<number>(maxProp)
@@ -28,6 +29,7 @@ const useRange = ({ step, range: propValue, minimumRange, minimumValue, maximumV
     maximumValue: Math.max(minimumValue, maxRef.current - minimumRange),
     value: minProp,
     step,
+    thumbSize,
     slideOnTap,
     onValueChange: onMinChange
   })
@@ -38,6 +40,7 @@ const useRange = ({ step, range: propValue, minimumRange, minimumValue, maximumV
     maximumValue,
     value: maxProp,
     step,
+    thumbSize,
     slideOnTap,
     onValueChange: onMaxChange
   })

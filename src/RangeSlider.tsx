@@ -81,6 +81,7 @@ const RangeSlider = React.forwardRef<RN.View, RangeSliderProps>((props: RangeSli
     minimumValue,
     maximumValue,
     range: propValue,
+    thumbSize,
     step,
     slideOnTap,
     crossingAllowed,

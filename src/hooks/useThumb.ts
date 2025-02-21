@@ -7,13 +7,14 @@ type Props = {
   value: number;
   minimumValue: number;
   maximumValue: number;
+  thumbSize: number;
   slideOnTap: boolean | undefined;
   onValueChange?: (value: number) => boolean | void;
 }
 
 /** Handle the state of a thumb for a slider */
 const useThumb = (props: Props) => {
-  const { step, value: propValue, slideOnTap, minimumValue, maximumValue, onValueChange } = props
+  const { step, value: propValue, slideOnTap, minimumValue, maximumValue, onValueChange, thumbSize } = props
   const [value, setValue] = React.useState(propValue || minimumValue) // The value desired
   const round = useRounding({ step, minimumValue, maximumValue })
 
@@ -46,7 +47,7 @@ const useThumb = (props: Props) => {
    **/
   const canMove = useEvent((newValue: number) => {
     if (slideOnTap) return true
-    else return Math.abs(newValue - value) < (step || (maximumValue - minimumValue) / 10 || 1)
+    else return Math.abs(newValue - value) < ((thumbSize / 2) || (maximumValue - minimumValue) / 10 || 1)
   })
 
   return { updateValue: userUpdateValue, canMove, value }

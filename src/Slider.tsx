@@ -69,6 +69,7 @@ const Slider = React.forwardRef<RN.View, SliderProps>((props: SliderProps, forwa
     maximumValue,
     value: propValue,
     step,
+    thumbSize,
     slideOnTap,
     onValueChange
   })
