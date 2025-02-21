@@ -1,3 +1,3 @@
-export { default as Slider } from './Slider'
-export { default as RangeSlider } from './RangeSlider'
+export { default as Slider, type SliderProps } from './Slider'
+export { default as RangeSlider, type RangeSliderProps } from './RangeSlider'
 export { default } from './Slider'
